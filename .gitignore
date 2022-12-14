@@ -1,0 +1,16 @@
+# IntelliJ editor
+.idea
+
+## cache OS
+.DS_Store
+.thumbs.db
+
+#AxonServer downloaded
+./AxonServer
+
+#AxonServer shared volume data
+./docker-data/AxonServer/data/*
+./docker-data/AxonServer/eventdata/*
+
+#h2 db files
+./h2db
