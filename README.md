@@ -9,13 +9,14 @@ Includes the following services:
 - [Axon Server](https://developer.axoniq.io/axon-server/technical-highlights) for Queue & Event Management 
 - Kotlin Microservices with [Spring Boot](http://projects.spring.io/spring-boot/) and Command & Query responsibility Separation with [Axon CQRS Framework](http://www.axonframework.org/)
 
-## Requirements
+
+## Local deployment
+### Requirements
 - Java 11
+- Maven
 - Docker & Docker Compose
 
-
-
-## Starting the stack
+### Starting the stack
 
 - Start Axon Server:
   - Go to console /projectPath/docker-data/AxonServer
@@ -48,4 +49,26 @@ Includes the following services:
       - Go to http://localhost:8082/products-service/products (It might need some time to be available)
       - Go to http://localhost:8082/products-service/h2 (To access the H2 database used for the projections)
 
+## Dockerized deployment
+### Requirements
+- Docker & Docker Compose
+### Build the application:
+- Go to the root path of the project
+- Run the next command
+```bash
+docker-compose build
+```
+
+### Run the application:
+- Go to root path of the project
+- Run the next command
+```bash
+docker-compose up -d
+```
+The stack is configured to run on the same ports as locally (be careful not trying to run locally and dockerized at the same time or you will get port problems)
+
+### Logs management
+```bash
+docker-compose logs -f
+```
 

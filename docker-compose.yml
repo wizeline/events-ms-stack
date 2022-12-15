@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+  axonserver:
+    image: axoniq/axonserver
+    hostname: axonserver
+    volumes:
+      - ./docker-data/AxonServer/data:/data
+      - ./docker-data/AxonServer/eventdata:/eventdata
+      - ./docker-data/AxonServer/config:/config:ro
+    ports:
+      - '8025:8025'
+      - '8124:8124'
+      - '8224:8224'
+    networks:
+      - events-stack-network
+
+  apigateway:
+    build: ApiGateway
+    depends_on:
+      - discoveryserver
+    ports:
+      - '8082:8082'
+    networks:
+      - events-stack-network
+  discoveryserver:
+    build: DiscoveryServer
+    depends_on:
+      - axonserver
+    ports:
+      - '8761:8761'
+    networks:
+      - events-stack-network
+  productservice:
+    build: ProductService
+    depends_on:
+      - axonserver
+      - discoveryserver
+      - apigateway
+    ports:
+      - '8080:8080'
+    networks:
+      - events-stack-network
+networks:
+  events-stack-network:
