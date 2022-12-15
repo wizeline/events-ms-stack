@@ -4,9 +4,9 @@ services:
     image: axoniq/axonserver
     hostname: axonserver
     volumes:
-      - ./docker-data/AxonServer/data:/data
-      - ./docker-data/AxonServer/eventdata:/eventdata
-      - ./docker-data/AxonServer/config:/config:ro
+      - ./AxonServer/data:/data
+      - ./AxonServer/eventdata:/eventdata
+      - ./AxonServer/config:/config:ro
     ports:
       - '8025:8025'
       - '8124:8124'

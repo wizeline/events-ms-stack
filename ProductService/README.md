@@ -1,6 +1,6 @@
 ## Product Service
 
-### Runing the application locally
+### Running the application locally
 #### Requirements
 - Java 11 - due to incompatibilities with Axon framework on greater versions.
 - Maven*
@@ -10,7 +10,7 @@ That is a SpringBoot application build on Kotlin that you can run it locally wit
 
 *Note: I usually run it using IntelliJ, so maven is run from there, if you run it from console you might need to install maven too 
 
-### Runing the application as standalone docker
+### Running the application as standalone docker
 #### Requirements
 - Docker
 

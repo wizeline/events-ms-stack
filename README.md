@@ -9,7 +9,7 @@ Includes the following services:
 - [Axon Server](https://developer.axoniq.io/axon-server/technical-highlights) for Queue & Event Management 
 - Kotlin Microservices with [Spring Boot](http://projects.spring.io/spring-boot/) and Command & Query responsibility Separation with [Axon CQRS Framework](http://www.axonframework.org/)
 
-
+Each of these services have a folder with a `README.md`explaining how to run it individually (locally/docker) but you can run the stack alltogether as it is explained below on Dockerized Deployment 
 ## Local deployment
 ### Requirements
 - Java 11
@@ -19,8 +19,8 @@ Includes the following services:
 ### Starting the stack
 
 - Start Axon Server:
-  - Go to console /projectPath/docker-data/AxonServer
-  - Run ``docker-compose up -d``
+  - Go to console /projectPath/AxonServer
+  - Run ``./start.sh``
   - This will start the server on http://localhost:8025/
 
 - Start Discovery Service:
