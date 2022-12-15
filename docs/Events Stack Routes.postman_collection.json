@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "03c7c99f-01bc-441d-bf33-412749b60f01",
+		"name": "Events Stack Routes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13684793"
+	},
+	"item": [
+		{
+			"name": "Product Service",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"IpadX\",\n    \"price\": 363,\n    \"quantity\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{rootPath}}:8082/products-service/products",
+							"protocol": "http",
+							"host": [
+								"{{rootPath}}"
+							],
+							"port": "8082",
+							"path": [
+								"products-service",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{rootPath}}:8082/products-service/products",
+							"protocol": "http",
+							"host": [
+								"{{rootPath}}"
+							],
+							"port": "8082",
+							"path": [
+								"products-service",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "H2 Database (Might not work properly on Postman)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{rootPath}}:8082/products-service/h2/",
+							"protocol": "http",
+							"host": [
+								"{{rootPath}}"
+							],
+							"port": "8082",
+							"path": [
+								"products-service",
+								"h2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discovery Server",
+			"item": [
+				{
+					"name": "Eureka",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{rootPath}}:8761/",
+							"protocol": "http",
+							"host": [
+								"{{rootPath}}"
+							],
+							"port": "8761",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AxonServer",
+			"item": [
+				{
+					"name": "Axon",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{rootPath}}:8025/",
+							"protocol": "http",
+							"host": [
+								"{{rootPath}}"
+							],
+							"port": "8025",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "rootPath",
+			"value": "localhost",
+			"type": "string"
+		}
+	]
+}

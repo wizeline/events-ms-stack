@@ -9,7 +9,9 @@ Includes the following services:
 - [Axon Server](https://developer.axoniq.io/axon-server/technical-highlights) for Queue & Event Management 
 - Kotlin Microservices with [Spring Boot](http://projects.spring.io/spring-boot/) and Command & Query responsibility Separation with [Axon CQRS Framework](http://www.axonframework.org/)
 
-Each of these services have a folder with a `README.md`explaining how to run it individually (locally/docker) but you can run the stack alltogether as it is explained below on Dockerized Deployment 
+Each of these services have a folder with a `README.md`explaining how to run it individually (locally/docker) but you can run the stack alltogether as it is explained below on Dockerized Deployment
+
+You can import into postman the next file "`docs/Events Stack Routes.postman_collection.json`" and get the routes to call the different services
 ## Local deployment
 ### Requirements
 - Java 11
