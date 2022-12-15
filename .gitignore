@@ -1,16 +1,19 @@
 # IntelliJ editor
-.idea
+*.idea/
+# Automatically generated JpaPluginProjectSettings
+*.jpb/
 
 ## cache OS
 .DS_Store
 .thumbs.db
 
-#AxonServer downloaded
-./AxonServer
-
+#AxonServer downloaded -- very big, moved to dockerized version
+AxonServerSW/
+#deprecated productServiceB
+productServiceB/
 #AxonServer shared volume data
-./docker-data/AxonServer/data/*
-./docker-data/AxonServer/eventdata/*
+docker-data/AxonServer/data/
+docker-data/AxonServer/eventdata/
 
 #h2 db files
-./h2db
+h2db/
