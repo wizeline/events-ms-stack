@@ -1,0 +1,8 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.3"
+services:
+  productservice:
+    command: "java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8765\
+      \ -Djava.security.egd=file:/dev/./urandom  -jar /usr/local/lib/ProductService.jar"
+    ports:
+    - "8765:8765"

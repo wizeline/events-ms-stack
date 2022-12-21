@@ -1,0 +1,64 @@
+#The only difference between docker-compose.yaml and this debug file is moving
+#from Dockerfile "ENTRYPOINT"  into "command" of the compose file
+#don't forget in compose run config set=true "--build/force build images"
+
+#create a network and add our services into this network:
+#so, "app" service will be able to connect to the mysql database from "db" servoce by the hostname="db":
+#jdbc:mysql://db:3306/DOCKERDB
+
+#Connection url for connection in the DatabaseView:
+#  jdbc:mysql://0.0.0.0:13306/DOCKERDB, login=root, password=root
+#App is available at: http://localhost:18080/entitybus/post
+version: '3.3'
+services:
+  axonserver:
+    image: axoniq/axonserver
+    hostname: axonserver
+    volumes:
+      - ./AxonServer/data:/data
+      - ./AxonServer/eventdata:/eventdata
+      - ./AxonServer/config:/config:ro
+    ports:
+      - '8025:8025'
+      - '8124:8124'
+      - '8224:8224'
+    networks:
+      - events-stack-network
+
+  apigateway:
+    build: ApiGateway
+    depends_on:
+      - discoveryserver
+    ports:
+      - '8082:8082'
+    networks:
+      - events-stack-network
+  discoveryserver:
+    build: DiscoveryServer
+    depends_on:
+      - axonserver
+    ports:
+      - '8761:8761'
+    networks:
+      - events-stack-network
+  productservice:
+    build:
+      context: ProductService
+      dockerfile: Dockerfile_debug
+    depends_on:
+      - axonserver
+      - discoveryserver
+      - apigateway
+    ports:
+      - '8080:8080'
+      - '8765:8765'
+
+    environment:
+      spring.datasource.url: "jdbc:h2:file:/tmp/events-ms-stack/h2db/products.db;AUTO_SERVER=true"
+      JAVA_DEBUG_PORT: 8765
+    networks:
+      - events-stack-network
+    command: java "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8765" -jar /usr/local/lib/ProductService.jar
+networks:
+  events-stack-network:
+
