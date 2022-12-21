@@ -38,6 +38,10 @@ services:
       - apigateway
     ports:
       - '8080:8080'
+    volumes:
+      - ./h2db:/tmp/events-ms-stack/h2db
+    environment:
+      spring.datasource.url: "jdbc:h2:file:/tmp/events-ms-stack/h2db/products.db;AUTO_SERVER=true"
     networks:
       - events-stack-network
 networks:
