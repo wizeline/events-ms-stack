@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Product Service",
+			"name": "Product Service (API-Gateway)",
 			"item": [
 				{
 					"name": "Create Product",
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\" : \"IpadX\",\n    \"price\": 363,\n    \"quantity\": 1\n}",
+							"raw": "{\n    \"title\" : \"\",\n    \"price\": 1999,\n    \"quantity\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,6 +76,14 @@
 								""
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Port",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
