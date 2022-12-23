@@ -37,6 +37,7 @@ class ProductAggregate {
         }
         interceptorChain.proceed();
     }
+
     @CommandHandler
     @CreationPolicy(AggregateCreationPolicy.ALWAYS)
     fun ProductAggregate(createProductCommand: CreateProductCommand) {

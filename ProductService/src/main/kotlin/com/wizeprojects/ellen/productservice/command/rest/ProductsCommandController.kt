@@ -9,18 +9,22 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/products") //http://localhost:8080/products
-class ProductsController(val env: Environment, val commandGateway : CommandGateway ) {
+class ProductsCommandController(val env: Environment, val commandGateway : CommandGateway ) {
 
     @PostMapping
     fun createProduct(@Valid @RequestBody createProductRestModel: CreateProductRestModel): String {
         val createProductCommand = CreateProductCommand(UUID.randomUUID().toString(),createProductRestModel.title, createProductRestModel.price, createProductRestModel.quantity)
 
+        return  commandGateway.sendAndWait(createProductCommand);
+        /*
         try {
             commandGateway.sendAndWait(createProductCommand);
         } catch (e: Exception) {
             return e.localizedMessage;
         }
+
         return "HTTP POST HANDLED ${createProductRestModel.title}"
+        */
     }
 /*
     @GetMapping
