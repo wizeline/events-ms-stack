@@ -136,6 +136,61 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Order Service (API-Gateway)",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"\",\n    \"price\": 1999,\n    \"quantity\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{rootPath}}:8082/orders-service/orders",
+							"protocol": "http",
+							"host": [
+								"{{rootPath}}"
+							],
+							"port": "8082",
+							"path": [
+								"orders-service",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "H2 Database (Might not work properly on Postman) Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{rootPath}}:8082/products-service/h2/",
+							"protocol": "http",
+							"host": [
+								"{{rootPath}}"
+							],
+							"port": "8082",
+							"path": [
+								"products-service",
+								"h2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

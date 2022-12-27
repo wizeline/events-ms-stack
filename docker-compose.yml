@@ -44,5 +44,19 @@ services:
       spring.datasource.url: "jdbc:h2:file:/tmp/events-ms-stack/h2db/products.db;AUTO_SERVER=true"
     networks:
       - events-stack-network
+  orderservice:
+    build: OrderService
+    depends_on:
+      - axonserver
+      - discoveryserver
+      - apigateway
+    ports:
+      - '8089:8089'
+    volumes:
+      - ./h2db:/tmp/events-ms-stack/h2db
+    environment:
+      spring.datasource.url: "jdbc:h2:file:/tmp/events-ms-stack/h2db/orders.db;AUTO_SERVER=true"
+    networks:
+      - events-stack-network
 networks:
   events-stack-network:
