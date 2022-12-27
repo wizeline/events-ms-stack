@@ -1,6 +1,6 @@
 package com.wizeprojects.ellen.orderservice.core.data.entity
 
-import com.wizeprojects.ellen.orderservice.core.OrderStatus
+import com.wizeprojects.ellen.orderservice.core.model.OrderStatus
 import javax.persistence.*
 
 @Entity

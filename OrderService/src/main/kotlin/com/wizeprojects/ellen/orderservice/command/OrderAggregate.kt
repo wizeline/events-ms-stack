@@ -1,6 +1,6 @@
 package com.wizeprojects.ellen.orderservice.command
 
-import com.wizeprojects.ellen.orderservice.core.OrderStatus
+import com.wizeprojects.ellen.orderservice.core.model.OrderStatus
 import com.wizeprojects.ellen.orderservice.core.events.OrderCreatedEvent
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
