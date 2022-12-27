@@ -54,7 +54,7 @@ You can import into postman the next file "`docs/Events Stack Routes.postman_col
 - Start the Order Service:
   - Go to /projectPath/OrderService
   - Run the Kotlin Microservice on it with your favourite maven/kotlin compiler
-  - This will start the ProductService on a specific port (that changes every time by configuration) and will register to the Discovery client and make it available through the Api Gateway through the next route.
+  - This will start the OrderService on a specific port (that changes every time by configuration) and will register to the Discovery client and make it available through the Api Gateway through the next route.
   - If everything went well the next things should happen:
     - The Order service should appear linked to axon Server (http://localhost:8025/) on Overview tab:
 
