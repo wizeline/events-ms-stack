@@ -1,10 +1,10 @@
-package com.wizeprojects.ellen.OrdersService
+package com.wizeprojects.ellen.orderservice
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class OrdersServiceApplicationTests {
+class OrderServiceApplicationTests {
 
 	@Test
 	fun contextLoads() {
