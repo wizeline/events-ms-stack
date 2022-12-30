@@ -1,4 +1,4 @@
-package com.wizeprojects.ellencommon.core.commands
+package com.wizeprojects.ellen.core.commands
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier
 

@@ -18,16 +18,11 @@
 		<kotlin.version>1.8.0</kotlin.version>
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
 		<axon.version>4.6.2</axon.version>
-		<spring-cloud.version>2021.0.5</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-kotlin</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
@@ -81,7 +76,7 @@
 			<version>31.1-jre</version>
 		</dependency>
 		<dependency>
-			<groupId>com.wizeprojects.ellencommon</groupId>
+			<groupId>com.wizeprojects.ellen</groupId>
 			<artifactId>core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -110,15 +105,6 @@
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<version>${kotlin.version}</version>
-				<executions>
-					<execution>
-						<id>compile</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<args>
 						<arg>-Xjsr305=strict</arg>

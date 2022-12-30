@@ -1,9 +1,9 @@
 package com.wizeprojects.ellen.orderservice.saga
 
 
+import com.wizeprojects.ellen.core.commands.ReserveProductCommand
+import com.wizeprojects.ellen.core.events.ProductReservedEvent
 import com.wizeprojects.ellen.orderservice.core.events.OrderCreatedEvent
-import com.wizeprojects.ellencommon.core.commands.ReserveProductCommand
-import com.wizeprojects.ellencommon.core.events.ProductReservedEvent
 import org.axonframework.commandhandling.CommandCallback
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.axonframework.modelling.saga.SagaEventHandler
@@ -15,8 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired
 
 @Saga
 class OrderSaga {
-
-    private val logger = LoggerFactory.getLogger(OrderSaga::class.java)
+    private companion object {
+        val logger = LoggerFactory.getLogger(OrderSaga::class.java)
+    }
 
     @Autowired
     @Transient
@@ -26,9 +27,9 @@ class OrderSaga {
     @SagaEventHandler(associationProperty = "orderId")
     fun handle(orderCreatedEvent: OrderCreatedEvent){
         val reserveProductCommand = ReserveProductCommand(
-            orderCreatedEvent.orderId,
-            orderCreatedEvent.quantity,
             orderCreatedEvent.productId,
+            orderCreatedEvent.quantity,
+            orderCreatedEvent.orderId,
             orderCreatedEvent.userId
         )
         logger.info(
@@ -41,7 +42,7 @@ class OrderSaga {
                 if (commandResultMessage.isExceptional) {
                     // Start a compensating transaction
                     logger.warn(
-                        "Failed handling the IssueCardCommand, with output [{} and exception [{}]",
+                        "Failed handling the reserveProductCommand, with output [{} and exception [{}]",
                         commandResultMessage.exceptionResult().message, commandResultMessage.exceptionResult()
                     )
                     /*

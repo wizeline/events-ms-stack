@@ -8,7 +8,7 @@
 		<version>2.7.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.wizeprojects.ellencommon</groupId>
+	<groupId>com.wizeprojects.ellen</groupId>
 	<artifactId>core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>core</name>
@@ -43,7 +43,6 @@
 			<version>${axon.version}</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<sourceDirectory>src/main/kotlin</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
@@ -84,5 +83,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

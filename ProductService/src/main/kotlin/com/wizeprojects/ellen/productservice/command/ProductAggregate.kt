@@ -1,16 +1,15 @@
 package com.wizeprojects.ellen.productservice.command
 
-import com.wizeprojects.ellen.productservice.core.data.ProductLookupRepository
+import com.wizeprojects.ellen.core.commands.ReserveProductCommand
+import com.wizeprojects.ellen.core.events.ProductReservedEvent
 import com.wizeprojects.ellen.productservice.core.events.ProductCreatedEvent
-import com.wizeprojects.ellencommon.core.commands.ReserveProductCommand
-import com.wizeprojects.ellencommon.core.events.ProductReservedEvent
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
-import org.axonframework.messaging.InterceptorChain
-import org.axonframework.modelling.command.*
-
+import org.axonframework.modelling.command.AggregateCreationPolicy
+import org.axonframework.modelling.command.AggregateIdentifier
+import org.axonframework.modelling.command.AggregateLifecycle
+import org.axonframework.modelling.command.CreationPolicy
 import org.axonframework.spring.stereotype.Aggregate
-import org.springframework.beans.factory.annotation.Autowired
 
 @Aggregate
 class ProductAggregate {
@@ -23,6 +22,8 @@ class ProductAggregate {
 
     fun ProductAggregate() {}
 
+/*
+// This enters in conflict with handling of reserveProductCommand on Order Saga
     @CommandHandlerInterceptor
     @Autowired
     fun intercept(interceptCommand: CreateProductCommand, interceptorChain: InterceptorChain, productLookupRepository: ProductLookupRepository) {
@@ -39,6 +40,7 @@ class ProductAggregate {
         }
         interceptorChain.proceed();
     }
+ */
 
     @CommandHandler
     @CreationPolicy(AggregateCreationPolicy.ALWAYS)

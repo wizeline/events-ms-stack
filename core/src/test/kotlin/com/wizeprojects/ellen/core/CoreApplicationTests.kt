@@ -1,4 +1,4 @@
-package com.wizeprojects.ellencommon.core
+package com.wizeprojects.ellen.core
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

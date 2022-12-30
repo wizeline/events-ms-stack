@@ -1,4 +1,4 @@
-package com.wizeprojects.ellencommon.core.events
+package com.wizeprojects.ellen.core.events
 
 data class ProductReservedEvent (
     val productId: String,
