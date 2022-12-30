@@ -2,6 +2,8 @@ package com.wizeprojects.ellen.productservice.command
 
 import com.wizeprojects.ellen.productservice.core.data.ProductLookupRepository
 import com.wizeprojects.ellen.productservice.core.events.ProductCreatedEvent
+import com.wizeprojects.ellencommon.core.commands.ReserveProductCommand
+import com.wizeprojects.ellencommon.core.events.ProductReservedEvent
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.messaging.InterceptorChain
@@ -57,9 +59,27 @@ class ProductAggregate {
             createProductCommand.quantity
         ))
     }
+    @CommandHandler
+    fun handle(reserveProductCommand: ReserveProductCommand) {
+        if(quantity < reserveProductCommand.quantity) {
+            throw IllegalArgumentException("Insufficient number of items in stock")
+        }
+
+        AggregateLifecycle.apply(ProductReservedEvent(
+            reserveProductCommand.productId,
+            reserveProductCommand.quantity,
+            reserveProductCommand.orderId,
+            reserveProductCommand.userId
+        ))
+    }
 
     @EventSourcingHandler
-    fun handle(productCreatedEvent: ProductCreatedEvent) {
+    fun on(productReservedEvent: ProductReservedEvent){
+        this.quantity -= productReservedEvent.quantity
+    }
+
+    @EventSourcingHandler
+    fun on(productCreatedEvent: ProductCreatedEvent) {
         this.productId = productCreatedEvent.productId
         this.title = productCreatedEvent.title
         this.price = productCreatedEvent.price

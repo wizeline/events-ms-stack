@@ -15,7 +15,7 @@
 	<description>Service to store orders</description>
 	<properties>
 		<java.version>11</java.version>
-		<kotlin.version>1.6.21</kotlin.version>
+		<kotlin.version>1.8.0</kotlin.version>
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
 		<axon.version>4.6.2</axon.version>
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
@@ -41,7 +41,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -81,6 +80,11 @@
 			<artifactId>guava</artifactId>
 			<version>31.1-jre</version>
 		</dependency>
+		<dependency>
+			<groupId>com.wizeprojects.ellencommon</groupId>
+			<artifactId>core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -105,6 +109,16 @@
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
+				<version>${kotlin.version}</version>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<args>
 						<arg>-Xjsr305=strict</arg>

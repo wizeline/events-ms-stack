@@ -96,3 +96,8 @@ docker-compose logs -f
  You can fix that issue by going to `AxonServer` folder and running the command `./stop.sh` before starting the stack on docker (`docker-compose up -d`)
 - The h2 database for the services in the dockerized environment is mounted on the path defined by each microservice in `ServicePath/docker-data/application.properties`
  So you will have to change also the login path when accessing h2 accordingly. 
+- I had several problems importing local services with maven and IntlliJ from one each other that I finally solved by upgrading the kotlin-maven-plugin version to 1.8.0
+- Another thing that helps on IntlliJ to build one project properly after updating dependencies and have run `maven clean install` is to also run maven reload project like in the image below.
+
+
+  <img src="./docs/reload-project-intellij.png" alt="eureka-subscription" style="width:600px;"/>

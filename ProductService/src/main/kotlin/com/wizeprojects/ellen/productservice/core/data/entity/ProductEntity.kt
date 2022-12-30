@@ -1,6 +1,9 @@
 package com.wizeprojects.ellen.productservice.core.data.entity
 
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.Table
 
 
 @Entity
@@ -13,5 +16,5 @@ data class ProductEntity(
     @Column(unique = true)
     val title: String,
     val price: Long,
-    val quantity: Int
+    var quantity: Int
 )
