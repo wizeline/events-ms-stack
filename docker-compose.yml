@@ -17,7 +17,8 @@ services:
   apigateway:
     build: ApiGateway
     depends_on:
-      - discoveryserver
+      - productservice
+      - orderservice
     ports:
       - '8082:8082'
     networks:
@@ -31,11 +32,12 @@ services:
     networks:
       - events-stack-network
   productservice:
-    build: ProductService
+    build:
+      context: .
+      dockerfile: Dockerfile-product-core
     depends_on:
       - axonserver
       - discoveryserver
-      - apigateway
     ports:
       - '8080:8080'
     volumes:
@@ -45,11 +47,12 @@ services:
     networks:
       - events-stack-network
   orderservice:
-    build: OrderService
+    build:
+      context: .
+      dockerfile: Dockerfile-order-core
     depends_on:
       - axonserver
       - discoveryserver
-      - apigateway
     ports:
       - '8089:8089'
     volumes:

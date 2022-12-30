@@ -1,0 +1,19 @@
+#
+# Build stage
+#
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY core/src /home/core/src
+COPY core/pom.xml /home/core
+COPY OrderService/src /home/app/src
+COPY OrderService/pom.xml /home/app
+COPY OrderService/docker-data/application.properties /home/app/src/main/resources
+RUN mvn -f /home/core/pom.xml clean install
+RUN mvn -f /home/app/pom.xml clean package
+
+#
+# Package stage
+#
+FROM openjdk:11-jre-slim
+COPY --from=build /home/app/target/OrderService-0.0.1-SNAPSHOT.jar /usr/local/lib/OrderService.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/usr/local/lib/OrderService.jar"]

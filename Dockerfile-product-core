@@ -1,0 +1,21 @@
+#
+# Build stage
+#
+FROM maven:3.6.0-jdk-11-slim AS build
+#This works without the settings as well, provided as example of custom maven configuration
+COPY ProductService/docker-data/settings.xml /usr/share/maven/ref/
+COPY core/src /home/core/src
+COPY core/pom.xml /home/core
+COPY ProductService/src /home/app/src
+COPY ProductService/pom.xml /home/app
+COPY ProductService/docker-data/application.properties /home/app/src/main/resources
+RUN mvn -f /home/core/pom.xml clean install
+RUN mvn -f /home/app/pom.xml clean package
+#ENTRYPOINT ["sh", "-c", "sleep 2073600"]
+#
+# Package stage
+#
+FROM openjdk:11-jre-slim
+COPY --from=build /home/app/target/ProductService-0.0.1-SNAPSHOT.jar /usr/local/lib/ProductService.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/usr/local/lib/ProductService.jar"]
