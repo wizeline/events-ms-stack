@@ -87,7 +87,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.wizeprojects.ellencommon</groupId>
+			<groupId>com.wizeprojects.ellen</groupId>
 			<artifactId>core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

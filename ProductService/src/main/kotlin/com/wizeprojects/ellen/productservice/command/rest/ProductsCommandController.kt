@@ -16,9 +16,9 @@ class ProductsCommandController(val env: Environment, val commandGateway : Comma
 
     @PostMapping
     fun createProduct(@Valid @RequestBody createProductRestModel: CreateProductRestModel): String {
+        val createProductCommand = CreateProductCommand(UUID.randomUUID().toString(),createProductRestModel.title, createProductRestModel.price, createProductRestModel.quantity)
 
-
-        return  commandGateway.sendAndWait(CreateProductCommand(UUID.randomUUID().toString(),createProductRestModel.title, createProductRestModel.price, createProductRestModel.quantity))
+        return  commandGateway.sendAndWait(createProductCommand);
         /*
         try {
             commandGateway.sendAndWait(createProductCommand);

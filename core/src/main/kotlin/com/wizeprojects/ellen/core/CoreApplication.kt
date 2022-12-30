@@ -1,4 +1,4 @@
-package com.wizeprojects.ellencommon.core
+package com.wizeprojects.ellen.core
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
